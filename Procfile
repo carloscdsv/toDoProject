@@ -1,1 +1,1 @@
-web: gunicorn toDoProject.wsgi
+web: python manage.py migrate && gunicorn toDoProject.wsgi
