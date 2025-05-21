@@ -1,1 +1,1 @@
-web: gunicorn to_doPorject.wsgi
+web: gunicorn to_doProject.wsgi
