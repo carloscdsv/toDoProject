@@ -1,0 +1,12 @@
+{% extends 'toDoApp/base.html' %}
+
+{% block content %}
+    <form action="{% url 'users:registration' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Registrarte</button>
+        <input type="hidden" name="next" value="{% url 'inicio' %}">
+    </form>
+
+
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends 'toDoApp/base.html' %}
+
+{% block content %}
+  <form action="{% url 'editarTarea' tarea.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submmit">Guardar</button>
+
+  </form>
+
+{% endblock content %}

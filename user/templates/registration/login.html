@@ -1,0 +1,20 @@
+{% extends 'toDoApp/base.html' %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p>Error! Usuario o contraseña incorrecta. Prueba de nuevo</p>
+  {% endif %}
+  <form action="{% url 'users:login' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Iniciar Sesion</button>
+    <input type="hidden" name="next" value="{% url 'inicio' %}">
+  </form>
+  <br>
+  <form action="{% url 'users:registration' %}" method="get">
+    {% csrf_token %}
+    <button type="submit">Registrarse</button>
+  </form>
+
+{% endblock content %}

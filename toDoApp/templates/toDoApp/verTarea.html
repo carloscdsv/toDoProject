@@ -1,0 +1,22 @@
+{% extends 'toDoApp/base.html' %}
+
+{% block content %}
+
+    <h2>{{ tareas }}</h2>
+
+      <p>Descripcion: </p>
+      <p>{{ descripcion }} </p><br>
+      <p>---------------------------</p><br>
+      <p>hecho: </p>
+        {% if hecho %}
+          <p>si</p>
+        {% else %}
+          <p>No</p>
+        {% endif %}
+      <p>---------------------------</p><br>
+      <p>Fecha: </p>
+      <p>{{ fecha }} </p><br>
+      <p>---------------------------</p><br>
+<a class="text-decoration-underline text-primary" href="{% url 'editarTarea' tarea.id %}">Editar tarea</a>
+
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends 'toDoApp/base.html' %}
+
+{% block content %}
+
+
+         {% if user.is_authenticated %}
+            <p>Hola! {{ user.username }}</p>
+            <fieldset>
+                <legend>Tareas:</legend>
+                <ul>
+                      {% for tarea in tareas %}
+                        {% if not tarea.hecho %}
+                          <li>
+                            <a class="text-decoration-underline text-primary" href="{% url 'verTarea' tarea.id %}">
+                              {{ tarea.tarea }}
+                            </a>
+                          </li>
+                        {% else %}
+                          <li>
+                            <a class="text-decoration-line-through text-success" href="{% url 'verTarea' tarea.id %}">
+                              {{ tarea.tarea }}
+                            </a>
+                          </li>
+                        {% endif %}
+                      {% empty %}
+                        <li>No hay tareas aún...</li>
+                      {% endfor %}
+                </ul>
+            <form action="{% url 'registrarTarea' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Agregar Tarea</button>
+                    <input type="hidden" name="next" value="{% url 'registrarTarea' %}">
+            </form>
+            <br>
+            <form action="{% url 'users:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Cerrar sesión</button>
+            </form>
+
+        {% else %}
+             <form action="{% url 'users:login' %}" method="get">
+                {% csrf_token %}
+                <button type="submit">iniciar Sesion</button>
+            </form>
+            <br>
+            <form action="{% url 'users:registration' %}" method="get">
+                {% csrf_token %}
+                <button type="submit">Registrarse</button>
+            </form>
+         {% endif %}
+
+{% endblock content %}

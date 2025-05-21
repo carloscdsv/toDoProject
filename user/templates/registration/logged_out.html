@@ -1,0 +1,11 @@
+{% extends 'toDoApp/base.html' %}
+
+{% block content %}
+    <p>Sesion Cerrrada</p><br>
+    <form action="{% url 'users:login' %}" method="get">
+        {% csrf_token %}
+        <button name="submit">Log in</button>
+    </form>
+     <br>
+     <p><a href="{% url 'inicio' %}">Inicio</a></p>
+{% endblock content %}
