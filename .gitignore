@@ -3,3 +3,4 @@ __pycache__/
 *.sqlite3
 # Archivos del sistema (opcional)
 .DS_Store
+.idea/
